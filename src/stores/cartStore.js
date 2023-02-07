@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia'
-import {ref, watch, computed} from 'vue'
-
+import {ref, watch} from 'vue'
+import Swal from 'sweetalert2'
 
 export const useCartStore = defineStore('cart', () => {
 
@@ -12,34 +12,65 @@ export const useCartStore = defineStore('cart', () => {
             cart.value.items.map(item => {
                 if(item.product.name === product.name){
                     item.quantity++ 
-                    item.subtotal = item.product.price * item.quantity
+                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your item has been updated',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
                 }
             })
         }else{
             // Add new product to cart
             cart.value.items.push({product,quantity: 1, subtotal: product.price})
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your item has been updated',
+                showConfirmButton: false,
+                timer: 1000
+            });
         }
     }
 
     const removeItemFromCart = (i, quantity) => {
         cart.value.items.splice(i,1)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your item has been removed',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
 
     const decreseItemFromCart = (product, i, quantity) => {
         cart.value.items.map(item => {
             if(item.product.name === product.name){
                 if(item.quantity === 1){
-                    items.value.splice(i,1)                   
+                    items.value.splice(i,1)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your item has been removed',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });                  
                 }else{
                     item.quantity--
-                    item.subtotal = item.product.price * item.quantity
+                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your item has been updated',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
                 }
             }
         }) 
-    }
-
-    const emptyCart = () => {
-        cart.value.items = []
     }
 
     watch(cart.value.items, () => {
@@ -57,6 +88,15 @@ export const useCartStore = defineStore('cart', () => {
         }
     })
 
+    const emptyCart = () => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'The purchase was successful!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
 
     return {
         cart,

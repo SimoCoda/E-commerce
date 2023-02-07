@@ -6,7 +6,7 @@
                     <img :src="item.product.image" class="h-[70px] mr-4 border-[1px] border-black"/>
                 </div>
                 <div class="flex w-14 mr-14 items-center justify-center">
-                    <h1 class="text-[15px] font-bold m-auto">{{ item.product.name }} <span class="text-[14px]"> {{(item.subtotal).toFixed(2)}} €</span></h1>  
+                    <h1 class="text-[15px] font-bold m-auto">{{ item.product.name }} <span class="text-[14px]"> {{ item.subtotal }} €</span></h1>  
                 </div>
                 <div class="mr-4 flex items-center justify-center border-[0.5px] border-slate-300">
                 <div class="w-10 border-r-[0.5px] border-slate-300">

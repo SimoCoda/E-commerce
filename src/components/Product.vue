@@ -12,6 +12,7 @@
 <script>
 import {useRouter} from 'vue-router';
 import { useCartStore } from '../stores/cartStore';
+import Swal from 'sweetalert2'
 
 export default {
     name: "Product",
@@ -26,6 +27,13 @@ export default {
                 router.push('/')
             }else{
                 router.push(`/productDetail/${props.product.name}`)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Info Item',
+                    showConfirmButton: false,
+                    timer: 700
+        });
             }
         }
 
