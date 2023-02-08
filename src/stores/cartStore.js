@@ -24,7 +24,7 @@ export const useCartStore = defineStore('cart', () => {
             })
         }else{
             // Add new product to cart
-            cart.value.items.push({product,quantity: 1, subtotal: (product.price).toFixed(2)})
+            cart.value.items.push({product,quantity: 1, subtotal: product.price})
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
