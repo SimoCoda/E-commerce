@@ -12,7 +12,7 @@ export const useCartStore = defineStore('cart', () => {
             cart.value.items.map(item => {
                 if(item.product.name === product.name){
                     item.quantity++ 
-                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    item.subtotal = (item.product.price).toFixed(2) * item.quantity
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -60,7 +60,7 @@ export const useCartStore = defineStore('cart', () => {
                     });                  
                 }else{
                     item.quantity--
-                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    item.subtotal = (item.product.price).toFixed(2) * item.quantity
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
