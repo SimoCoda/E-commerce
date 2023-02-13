@@ -1,5 +1,5 @@
 <template>
-    <div class="columns-2">
+    <div class="columns-2 xl:columns-3 xl:h-98  ">
         <div v-for="product in products" :key="product.name" class="mb-8">
             <Product :product="product"/>
         </div>

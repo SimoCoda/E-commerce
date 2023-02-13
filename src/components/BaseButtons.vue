@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full">
-    <button class="bg-slate-200 h-12 w-80">{{title}}</button>
+  <div class="w-full xl:w-[1920px] md:w-[834px]">
+    <button class="bg-slate-200 h-12 w-80 first-line xl:text-2xl md:text-2xl text-white bg-slate-400 hover:bg-slate-800">{{title}}</button>
   </div>
 </template>
 

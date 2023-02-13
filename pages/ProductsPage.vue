@@ -1,6 +1,6 @@
 <template>
     <IconBar class="-mt-1 pt-3 z-50" />
-    <div class="ml-5 absolute top-20 z-10">
+    <div class="-ml-8 absolute top-20 z-10 xl:top-48 xl:-left-[60px] md:top-[120px]">
         <ProductList class=""/>
     </div>
 </template>

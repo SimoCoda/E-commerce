@@ -1,10 +1,11 @@
 import {defineStore} from 'pinia'
-import {ref, watch} from 'vue'
+import {ref, watch, computed} from 'vue'
 import Swal from 'sweetalert2'
 
 export const useCartStore = defineStore('cart', () => {
 
-    let cart = ref({items: [], total: 0, cartLength: 0});
+    let cart = ref({items: [], total: 0});
+    let itemsInCart = ref(0)
 
     const addItemToCart = (product) => {
         if(cart.value.items.filter(item => item.product.name === product.name).length > 0) {
@@ -12,7 +13,7 @@ export const useCartStore = defineStore('cart', () => {
             cart.value.items.map(item => {
                 if(item.product.name === product.name){
                     item.quantity++ 
-                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    item.subtotal = Math.round((item.product.price * item.quantity) * 100) / 100
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -60,7 +61,7 @@ export const useCartStore = defineStore('cart', () => {
                     });                  
                 }else{
                     item.quantity--
-                    item.subtotal = (item.product.price * item.quantity).toFixed(2)
+                    item.subtotal = Math.round((item.product.price * item.quantity) * 100) / 100
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -75,20 +76,25 @@ export const useCartStore = defineStore('cart', () => {
 
     watch(cart.value.items, () => {
         let total = 0
-        let itemsInCart = 0
+        let totalItem = 0
         cart.value.items.forEach(item => {
             total +=  item.subtotal
-            itemsInCart += item.quantity
+            totalItem += item.quantity
         })
-        cart.value.cartLength = itemsInCart
-        if(cart.value.cartLength >= 3){
-            cart.value.total = (total - [(total*10)/100]).toFixed(2)
+        if(totalItem >= 3){
+            cart.value.total = Math.round((total - (total/10))*100)/100
+            itemsInCart.value = totalItem
         }else{
             cart.value.total = total
+            itemsInCart.value = totalItem
         }
     })
 
     const emptyCart = () => {
+        console.log("Acquisto completato!")
+        cart.value.items.forEach(item => {
+            cart.value.items.splice(item)
+        })
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -103,6 +109,7 @@ export const useCartStore = defineStore('cart', () => {
         addItemToCart,
         removeItemFromCart,
         decreseItemFromCart,
-        emptyCart,  
+        emptyCart,
+        itemsInCart,
     }
 })

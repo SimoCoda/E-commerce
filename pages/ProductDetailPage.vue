@@ -1,10 +1,11 @@
 <template>
     <div class="z-20 static left-0 top-0 flex">
-        <IconBar class="pt-3" /> 
+        <IconBar class="-mt-1 pt-3 z-50" /> 
     </div>
-    <div class="mt-24">
-        <ProductInfo class="z-10" />
+    <div class="mt-28 md:mt-36 xl:mt-48">
+        <ProductInfo class="z-10"/>
     </div>
+
 </template>
   
 <script>
