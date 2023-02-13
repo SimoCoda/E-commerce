@@ -1,7 +1,7 @@
 <template>
     <div class="mb-16 flex">
         <div v-if="cartStore.cart.items != 0">
-            <div v-for="(item, i) in cartStore.cart.items" :key="item.product.name" class="mt-4 mb-3 ml-0 pt-2 pb-2 flex bg-slate-200 items-center justify-center w-[414px] xl:w-[1920px] xl:h-48 xl:-mt-1 md:w-[834px] md:h-32">
+            <div v-for="(item, i) in cartStore.cart.items" :key="item.product.name" class="mt-4 mb-3 ml-0 pt-2 pb-2 flex bg-slate-200 items-center justify-center w-[390px] xl:w-[1920px] xl:h-48 xl:-mt-1 md:w-[834px] md:h-32">
                 <div class="">
                     <img :src="item.product.image" class="h-[70px] mr-4 border-[1px] border-black xl:h-[160px] xl:mr-44 md:h-[110px] md:mr-20"/>
                 </div>
@@ -27,7 +27,7 @@
             <h1 class="text-right mt-7 mb-10 pr-4 text-lg xl:text-3xl xl:mt-10 xl:mb-20 xl:mr-10 md:text-3xl md:mt-10 md:mb-20">Total price: <span class="text-xl xl:text-4xl md:text-4xl">{{ cartStore.cart.total }} €</span></h1>
         </div>
         <div v-else class="w-[414px] mt-16 xl:w-[1920px] xl:mt-36 md:w-[834px] md:mt-32">
-            <h1 class="text-center text-3xl text-slate-300 xl:text-6xl md:text-5xl">Il carrello è vuoto!</h1>
+            <h1 class="text-center text-3xl text-slate-300 xl:text-6xl md:text-5xl">The cart is empty!</h1>
         </div>
     </div>
 </template>
