@@ -1,5 +1,5 @@
 <template>
-    <div class="z-20 static left-0 top-0 flex">
+    <div class="z-20 flex left-0 top-0">
         <IconBar class="-mt-1 pt-3 z-50" /> 
     </div>
     <div class="mt-20 md:mt-36 xl:mt-48">
