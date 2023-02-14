@@ -91,17 +91,28 @@ export const useCartStore = defineStore('cart', () => {
     })
 
     const emptyCart = () => {
-        console.log("Acquisto completato!")
-        cart.value.items.forEach(item => {
-            cart.value.items.splice(item)
-        })
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'The purchase was successful!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        if(itemsInCart.value > 0){
+            console.log("Acquisto completato!")
+            cart.value.items.forEach(item => {
+                cart.value.items.splice(item)
+            })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'The purchase was successful!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'The cart is empty! Add products to your cart',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+        
     }
 
     return {
