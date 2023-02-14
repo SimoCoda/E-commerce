@@ -7,7 +7,7 @@
             <h1 class="text-3xl text-center font-bold xl:text-center xl:text-5xl md:text-5xl md:text-center">{{product.price}} €</h1>
         </div>
     </div>
-    <div class="fixed bottom-0 left-0 right-0 h-20 pt-5 z-50 xl:h-24 xl:pt-5 xl:mb-0 md:mb-3 md:pt-10 md:h-32">
+    <div class="fixed bottom-0 left-0 right-0 h-20 pt-5 z-50 xl:h-24 xl:pt-5 xl:mb-0 md:mb-0 md:pt-10 md:h-32">
         <BaseButtons title="Add to cart" @click="cartStore.addItemToCart(product)" />
     </div>
 </template>
