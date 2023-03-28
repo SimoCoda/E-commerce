@@ -31,7 +31,7 @@
         </div>
     </div>
 </template>
-npm run dev
+
 <script>
 import {useCartStore} from '../stores/cartStore';
 
